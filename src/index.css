@@ -1,0 +1,617 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   SMART CSE HUB — APPLE-INSPIRED MINIMALIST SAAS DESIGN SYSTEM (STAGE 1)
+   Color Palette:
+   - Surface White: #ffffff
+   - Soft Grey (Secondary Backgrounds): #f8fafc, #f1f5f9
+   - Navy Blue (Headings & Navigation): #0f172a, #1e293b
+   - Electric Blue (Primary Actions & Highlights): #2563eb, #1d4ed8
+   - Neutral Grey (Secondary Text & Borders): #475569, #64748b, #cbd5e1, #e2e8f0
+   ========================================================================== */
+
+@theme {
+  --color-surface-white: #ffffff;
+  --color-bg-base: #f8fafc;
+  --color-bg-subtle: #f1f5f9;
+  --color-navy-950: #0a0f1d;
+  --color-navy-900: #0f172a;
+  --color-navy-800: #1e293b;
+  --color-navy-700: #334155;
+  --color-electric-500: #3b82f6;
+  --color-electric-600: #2563eb;
+  --color-electric-700: #1d4ed8;
+  --color-electric-800: #1e40af;
+  --color-electric-50: #eff6ff;
+  --color-electric-100: #dbeafe;
+  --color-electric-200: #bfdbfe;
+  --color-neutral-slate-50: #f8fafc;
+  --color-neutral-slate-100: #f1f5f9;
+  --color-neutral-slate-200: #e2e8f0;
+  --color-neutral-slate-300: #cbd5e1;
+  --color-neutral-slate-400: #94a3b8;
+  --color-neutral-slate-500: #64748b;
+  --color-neutral-slate-600: #475569;
+  --color-neutral-slate-700: #334155;
+  --color-neutral-slate-800: #1e293b;
+  --color-neutral-slate-900: #0f172a;
+}
+
+:root {
+  /* 1. Surface & Canvas Colors (Light SaaS Palette) */
+  --bg-primary: #f8fafc;            /* Soft grey base canvas */
+  --bg-secondary: #f1f5f9;          /* Subtly contrasting section background */
+  --bg-tertiary: #e2e8f0;           /* Neutral divider background */
+  --bg-surface: #ffffff;            /* Pure white primary card / surface */
+  --bg-surface-elevated: #ffffff;   /* Pure white elevated surface */
+  --bg-surface-hover: #f8fafc;      /* Soft hover state */
+  --bg-card: #ffffff;
+  --bg-card-hover: #ffffff;
+
+  /* 2. Brand & Palette Identity */
+  --color-white: #ffffff;
+  --color-soft-grey: #f8fafc;
+  --color-soft-grey-alt: #f1f5f9;
+  --color-navy-primary: #0f172a;     /* Deep navy for primary headings & key navigation */
+  --color-navy-secondary: #1e293b;   /* Slate navy for subheadings & structural text */
+  --color-navy-body: #334155;        /* High-contrast readable body text (9.7:1 AAA) */
+  --color-electric-blue: #2563eb;    /* Vibrant electric blue for primary CTA */
+  --color-electric-hover: #1d4ed8;   /* Deep electric hover */
+  --color-electric-active: #1e40af;  /* Active electric press */
+  --color-electric-subtle: #eff6ff;  /* 50-weight light blue tint */
+  --color-electric-border: #bfdbfe;  /* Electric border accent */
+
+  /* 3. Typography Colors */
+  --text-primary: #0f172a;          /* Deep navy text for highest contrast (#0F172A) */
+  --text-secondary: #475569;        /* Slate neutral grey for secondary body (#475569 - 6.8:1 AAA) */
+  --text-muted: #64748b;            /* Neutral grey for captions & helpers (#64748B - 4.6:1 AA) */
+  --text-faint: #64748b;            /* High-contrast grey for placeholders & helpers */
+  --text-inverse: #ffffff;          /* White text on dark/electric backgrounds */
+
+  /* 4. Semantic Status Colors */
+  --color-success: #166534;          /* High-contrast accessible green (#166534) */
+  --color-success-bg: #ecfdf5;
+  --color-success-border: #a7f3d0;
+  --color-warning: #b45309;          /* High-contrast accessible amber */
+  --color-warning-bg: #fffbeb;
+  --color-warning-border: #fde68a;
+  --color-danger: #b91c1c;           /* High-contrast accessible red (#B91C1C) */
+  --color-danger-bg: #fef2f2;
+  --color-danger-border: #fecaca;
+  --color-info: #0284c7;
+  --color-info-bg: #f0f9ff;
+  --color-info-border: #bae6fd;
+
+  /* 5. Hairline Borders */
+  --border-subtle: #f1f5f9;
+  --border-default: #cbd5e1;        /* Crisp accessible borders (#CBD5E1) */
+  --border-hover: #94a3b8;
+  --border-focus: #1d4ed8;
+  --border-highlight: rgba(29, 78, 216, 0.25);
+
+  /* 6. Elevation Shadows (Apple-style diffused depth) */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 14px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+  --shadow-lg: 0 12px 28px -4px rgba(15, 23, 42, 0.08), 0 4px 10px -2px rgba(15, 23, 42, 0.03);
+  --shadow-xl: 0 20px 40px -8px rgba(15, 23, 42, 0.1);
+  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 0 0 1px rgba(15, 23, 42, 0.06);
+  --shadow-card-hover: 0 10px 24px -4px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(37, 99, 235, 0.25);
+  --shadow-dropdown: 0 16px 36px -4px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(15, 23, 42, 0.06);
+  --shadow-modal: 0 24px 54px -12px rgba(15, 23, 42, 0.2), 0 0 0 1px rgba(15, 23, 42, 0.08);
+
+  /* 7. Radii (Apple-inspired rounded geometry) */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* 8. Typography Scale */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --font-family: var(--font-sans);
+
+  /* 9. Spacing Scale */
+  --space-1: 0.25rem;  /* 4px */
+  --space-2: 0.5rem;   /* 8px */
+  --space-3: 0.75rem;  /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.25rem;  /* 20px */
+  --space-6: 1.5rem;   /* 24px */
+  --space-8: 2rem;     /* 32px */
+  --space-10: 2.5rem;  /* 40px */
+  --space-12: 3rem;    /* 48px */
+  --space-16: 4rem;    /* 64px */
+
+  /* 10. Transitions & Natural Apple Deceleration */
+  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: 150ms var(--ease-apple);
+  --transition-base: 200ms var(--ease-apple);
+  --transition-smooth: 300ms var(--ease-apple);
+
+  /* Backward Compatibility Aliases for Existing Components */
+  --accent-blue: var(--color-electric-blue);
+  --accent-blue-hover: var(--color-electric-hover);
+  --accent-indigo: #4f46e5;
+  --accent-cyan: #0284c7;
+  --accent-emerald: var(--color-success);
+  --accent-amber: var(--color-warning);
+  --accent-rose: var(--color-danger);
+}
+
+/* ==========================================================================
+   Global Reset & Base Canvas
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html,
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-primary);
+  color: var(--color-navy-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  max-width: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg-primary);
+}
+
+/* ==========================================================================
+   Typography Hierarchy (Navy Blue Headings, Slate Body)
+   ========================================================================== */
+h1, .heading-1 {
+  font-family: var(--font-sans);
+  font-size: 2.25rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-navy-primary);
+  letter-spacing: -0.03em;
+}
+
+@media (min-width: 768px) {
+  h1, .heading-1 {
+    font-size: 3rem;
+  }
+}
+
+h2, .heading-2 {
+  font-family: var(--font-sans);
+  font-size: 1.75rem;
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--color-navy-primary);
+  letter-spacing: -0.025em;
+}
+
+@media (min-width: 768px) {
+  h2, .heading-2 {
+    font-size: 2.25rem;
+  }
+}
+
+h3, .heading-3 {
+  font-family: var(--font-sans);
+  font-size: 1.35rem;
+  line-height: 1.3;
+  font-weight: 600;
+  color: var(--color-navy-secondary);
+  letter-spacing: -0.018em;
+}
+
+h4, .heading-4 {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.4;
+  font-weight: 600;
+  color: var(--color-navy-secondary);
+  letter-spacing: -0.012em;
+}
+
+p, .text-body {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-navy-body);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-caption {
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Reusable Button Styles
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.btn:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Button Variants */
+.btn-primary {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background-color: #1e40af;
+  box-shadow: var(--shadow-md);
+}
+
+.btn-primary:active:not(:disabled) {
+  background-color: var(--color-electric-active);
+}
+
+.btn-secondary {
+  background-color: var(--color-soft-grey-alt);
+  color: var(--color-navy-primary);
+  border: 1px solid var(--border-default);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background-color: #e2e8f0;
+  border-color: var(--border-hover);
+}
+
+.btn-outline {
+  background-color: #ffffff;
+  color: var(--color-navy-primary);
+  border: 1px solid var(--border-default);
+  box-shadow: var(--shadow-xs);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--color-soft-grey);
+  border-color: var(--border-hover);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: var(--color-navy-secondary);
+  border: 1px solid transparent;
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--color-soft-grey-alt);
+  color: var(--color-navy-primary);
+}
+
+.btn-danger {
+  background-color: var(--color-danger);
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background-color: #b91c1c;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 0.375rem 0.75rem;
+  font-size: 0.8125rem;
+  border-radius: var(--radius-sm);
+}
+
+.btn-md {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  border-radius: var(--radius-md);
+}
+
+.btn-lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: var(--radius-lg);
+}
+
+/* ==========================================================================
+   Reusable Card Styles (Clean White Surfaces, Apple Diffused Elevation)
+   ========================================================================== */
+.card-saas {
+  background-color: #ffffff;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  transition: all var(--transition-base);
+}
+
+.card-interactive {
+  background-color: #ffffff;
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: var(--space-6);
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.card-interactive:hover {
+  border-color: rgba(37, 99, 235, 0.35);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.card-header-saas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.card-title-saas {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--color-navy-primary);
+  letter-spacing: -0.015em;
+}
+
+.card-description-saas {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.card-footer-saas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-4);
+  margin-top: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   Consistent Form Fields & Focus States
+   ========================================================================== */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--color-navy-primary);
+  letter-spacing: -0.01em;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid var(--border-default);
+  color: var(--color-navy-primary);
+  border-radius: var(--radius-md);
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  font-family: var(--font-sans);
+  line-height: 1.5;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder,
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+  opacity: 1;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #1d4ed8;
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.15);
+}
+
+.form-input:disabled,
+.form-select:disabled,
+.form-textarea:disabled,
+input:disabled,
+select:disabled,
+textarea:disabled {
+  background-color: var(--color-soft-grey-alt);
+  color: #475569;
+  cursor: not-allowed;
+  opacity: 0.85;
+  border-color: #cbd5e1;
+}
+
+.form-helper {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.form-error {
+  font-size: 0.75rem;
+  color: var(--color-danger);
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* ==========================================================================
+   Badge & Tag Components
+   ========================================================================== */
+.badge-saas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.badge-blue {
+  background-color: var(--color-electric-subtle);
+  color: var(--color-electric-blue);
+  border: 1px solid var(--color-electric-border);
+}
+
+.badge-navy {
+  background-color: #f1f5f9;
+  color: var(--color-navy-primary);
+  border: 1px solid #cbd5e1;
+}
+
+.badge-neutral {
+  background-color: #f8fafc;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-default);
+}
+
+.badge-success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  border: 1px solid var(--color-success-border);
+}
+
+.badge-warning {
+  background-color: var(--color-warning-bg);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning-border);
+}
+
+.badge-danger {
+  background-color: var(--color-danger-bg);
+  color: var(--color-danger);
+  border: 1px solid var(--color-danger-border);
+}
+
+/* ==========================================================================
+   Accessible Keyboard Focus
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-electric-blue);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Responsive Layout Helpers
+   ========================================================================== */
+.container-saas {
+  max-width: 80rem; /* 1280px */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container-saas {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-saas {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+}
+
+.section-saas {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .section-saas {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
+
+/* Custom Scrollbar for Light SaaS */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ==========================================================================
+   Reduced Motion Support
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
